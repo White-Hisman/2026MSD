@@ -1,0 +1,3 @@
+<view class="title">hello {{wording}}!  </view>
+<image mode="heightFix" src="../../img/next.png"> </image>
+<button bind:tap="onClick"> 点击 </button>

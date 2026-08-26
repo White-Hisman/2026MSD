@@ -1,0 +1,62 @@
+<!-- index.wxml -->
+<view class="box">
+  <view class="pic">
+    <image mode="widthFix" src="../../img/card.png"></image>
+  </view>
+
+  <view class="title">✨ 点击问题 · 展开回答</view>
+
+  <view class="main">
+    <view class="card">
+
+      <view class="item" data-id="a1" bindtap="tap">
+        <view class="head">
+          <text class="name">关于我的专业学习？</text>
+          <text class="icon {{show1 ? 'up' : ''}}">▾</text>
+        </view>
+        <view class="body {{show1 ? 'open' : ''}}">
+          <text class="text">现阶段重点夯实计算机专业基础，兼顾理论学习与代码实践，锻炼逻辑思维能力，保持主动学习的习惯，持续了解技术相关动态。</text>
+        </view>
+      </view>
+
+      <view class="line"></view>
+
+      <view class="item" data-id="a2" bindtap="tap">
+        <view class="head">
+          <text class="name">团队和工作方面?</text>
+          <text class="icon {{show2 ? 'up' : ''}}">▾</text>
+        </view>
+        <view class="body {{show2 ? 'open' : ''}}">
+          <text class="text">有学生工作、校园活动参与经历，重视团队协作，能够高效完成分配任务，善于沟通倾听，配合团队推进各项事务。</text>
+        </view>
+      </view>
+
+      <view class="line"></view>
+
+      <view class="item" data-id="a3" bindtap="tap">
+        <view class="head">
+          <text class="name">我的性格特质？</text>
+          <text class="icon {{show3 ? 'up' : ''}}">▾</text>
+        </view>
+        <view class="body {{show3 ? 'open' : ''}}">
+          <text class="text">做事细心负责，遇事理性思考，有耐心，愿意接受新挑战。</text>
+        </view>
+      </view>
+
+      <view class="line"></view>
+
+      <view class="item" data-id="a4" bindtap="tap">
+        <view class="head">
+          <text class="name">个人期望？</text>
+          <text class="icon {{show4 ? 'up' : ''}}">▾</text>
+        </view>
+        <view class="body {{show4 ? 'open' : ''}}">
+          <text class="text">希望多参与实践项目提升技术实力，和志同道合的同学交流学习，实现专业与综合能力同步成长。</text>
+        </view>
+      </view>
+
+      <view class="line"></view>
+
+    </view>
+  </view>
+</view>

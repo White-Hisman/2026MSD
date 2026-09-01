@@ -1,0 +1,95 @@
+<!-- pages/my/my.wxml -->
+
+<!-- 登录区域 -->
+<view class="myLogin">
+  <!-- 已登录状态 -->
+  <block wx:if="{{isLogin}}">
+    <view class="user-info">
+      <image class="avatar" src="{{src}}" mode="aspectFill"></image>
+      <text class="nickname">{{nickName}}</text>
+      <view class="user-badge">已认证</view>
+    </view>
+    <button class="logout-btn" bindtap="logout">
+      <text class="logout-icon">↗</text>
+      退出登录
+    </button>
+  </block>
+  
+  <!-- 未登录状态 -->
+  <block wx:else>
+    <!-- 头像选择 -->
+    <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+      <image class="avatar-select" src="{{avatarUrl}}" mode="aspectFill"></image>
+      <view class="avatar-edit">
+        <text class="edit-icon">📷</text>
+        <text>更换头像</text>
+      </view>
+    </button>
+    
+    <!-- 昵称输入 -->
+    <view class="nickname-wrapper">
+      <view class="input-icon">👤</view>
+      <input 
+        class="nickname-input" 
+        type="nickname" 
+        placeholder="请输入微信昵称"
+        placeholder-class="placeholder-style"
+        value="{{nickName}}"
+        bindchange="onNicknameChange"
+      />
+    </view>
+    
+    <!-- 登录按钮 -->
+    <button class="login-btn" bindtap="submitLogin">
+      <text class="btn-icon">✨</text>
+      立即登录
+    </button>
+  </block>
+</view>
+
+<!-- 收藏列表 -->
+<view class="myFavorite">
+  <view class="favorite-header">
+    <view class="favorite-title">
+      <text class="title-icon">⭐</text>
+      <text>我的收藏</text>
+    </view>
+    <view class="favorite-count">{{number}} 篇</view>
+  </view>
+
+  <view class="news-list">
+    <view 
+      class="news-item" 
+      wx:for="{{newsList}}" 
+      wx:key="id" 
+      bindtap="goToDetail" 
+      data-id="{{item.id}}"
+    >
+      <image src="{{item.poster}}" mode="aspectFill" lazy-load="{{true}}"></image>
+      <view class="news-info">
+        <view class="category-tag" wx:if="{{item.category}}">{{item.category}}</view>
+        <text class="news-title">{{item.title}}</text>
+        <view class="news-bottom">
+          <text class="date">📅 {{item.add_date}}</text>
+          <text class="read-icon">→</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 空状态 -->
+  <view wx:if="{{number === 0 && isLogin}}" class="empty-state">
+    <view class="empty-icon-wrapper">
+      <text class="empty-icon">📭</text>
+    </view>
+    <text class="empty-title">还没有收藏的新闻</text>
+    <text class="empty-desc">去首页看看有什么感兴趣的新闻吧</text>
+    <button class="empty-btn" bindtap="goToIndex">去首页逛逛</button>
+  </view>
+  
+  <view wx:if="{{!isLogin}}" class="login-tip-state">
+    <text class="tip-icon">🔒</text>
+    <text class="tip-text">请先登录查看收藏</text>
+    <text class="tip-desc">登录后可同步收藏内容</text>
+  </view>
+</view>

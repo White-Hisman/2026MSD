@@ -1,0 +1,64 @@
+/** app.wxss **/
+
+/* 全局样式 */
+page {
+  background-color: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+}
+
+/* 全局新闻列表样式 */
+.news-list {
+  padding: 20rpx;
+}
+
+.news-item {
+  display: flex;
+  padding: 24rpx 20rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  align-items: flex-start;
+}
+
+.news-item:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.news-item image {
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 12rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+  background: #f0f2f5;
+  object-fit: cover;
+}
+
+.news-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.news-info text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.news-info .date {
+  font-size: 24rpx;
+  color: #b0b8c4;
+  margin-top: 12rpx;
+}

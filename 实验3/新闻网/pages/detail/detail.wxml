@@ -1,0 +1,65 @@
+<!-- pages/detail/detail.wxml -->
+<view class="detail-container">
+  <!-- 顶部返回 + 分类标签 -->
+  <view class="detail-header">
+    <view class="header-back" bindtap="goBack">
+      <text class="back-icon">‹</text>
+      <text class="back-text">返回</text>
+    </view>
+    <view class="category-badge">{{article.category}}</view>
+  </view>
+
+  <!-- 文章标题区域 -->
+  <view class="article-header">
+    <view class="title-wrapper">
+      <text class="article-title">{{article.title}}</text>
+    </view>
+    
+    <!-- 文章元信息 -->
+    <view class="article-meta">
+      <view class="meta-item">
+        <text class="meta-text">{{article.add_date}}</text>
+      </view>
+      <view class="meta-divider"></view>
+      <view class="meta-item">
+        <text class="meta-text">{{article.category}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 封面图 -->
+  <view class="cover-wrapper">
+    <image class="cover-image" src="{{article.poster}}" mode="aspectFill" lazy-load="{{true}}"></image>
+    <view class="cover-overlay"></view>
+  </view>
+
+  <!-- 文章内容 -->
+  <view class="article-body">
+    <view class="content-wrapper">
+      <view class="content-decoration">
+        <view class="deco-dot"></view>
+        <view class="deco-line"></view>
+      </view>
+      <text class="article-content">{{article.content}}</text>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-actions">
+    <!-- 收藏按钮 - 未登录时显示登录提示 -->
+    <view wx:if="{{!isLogin}}" class="collect-btn login-tip-btn" bindtap="goToLogin">
+      <text class="collect-text">登录后收藏</text>
+    </view>
+    
+    <button 
+      wx:else
+      class="collect-btn {{isAdd ? 'collected' : 'uncollected'}}"
+      bindtap="{{isAdd ? 'cancelFavorites' : 'addFavorites'}}"
+    >
+      <text class="collect-text">{{isAdd ? '取消收藏' : '收藏本文'}}</text>
+    </button>
+  </view>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-area"></view>
+</view>

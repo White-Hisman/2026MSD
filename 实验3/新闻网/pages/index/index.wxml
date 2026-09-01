@@ -1,0 +1,52 @@
+<!-- pages/index/index.wxml -->
+<!-- 幻灯片 -->
+<view class="swiper-wrapper">
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="500" circular="{{true}}" indicator-color="rgba(255,255,255,0.4)" indicator-active-color="#ffffff">
+    <swiper-item wx:for="{{swiperImg}}" wx:key="index">
+      <image src="{{item.src}}" mode="aspectFill" lazy-load="{{true}}"></image>
+    </swiper-item>
+  </swiper>
+</view>
+<!-- 分类导航 -->
+<view class="category-tabs">
+  <view 
+    wx:for="{{categories}}" 
+    wx:key="index"
+    class="tab-item {{currentCategory === item ? 'active' : ''}}"
+    bindtap="switchCategory"
+    data-category="{{item}}"
+  >
+    {{item}}
+  </view>
+</view>
+
+
+
+<!-- 新闻列表 -->
+<view class="news-list">
+  <!-- 分类标题 -->
+  <view class="category-header">
+    <view class="category-title-wrapper">
+      <text class="category-title">{{currentCategory}}</text>
+      <text class="category-subtitle">最新资讯</text>
+    </view>
+    <text class="category-count">共 {{newsList.length}} 篇</text>
+  </view>
+  
+  <view class="news-item" wx:for="{{newsList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+    <image src="{{item.poster}}" mode="aspectFill" lazy-load="{{true}}"></image>
+    <view class="news-info">
+      <text class="news-title">{{item.title}}</text>
+      <view class="news-meta">
+        <text class="news-date">📅 {{item.add_date}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 空状态 -->
+  <view wx:if="{{newsList.length === 0}}" class="empty-state">
+    <text class="empty-icon">📭</text>
+    <text class="empty-text">暂无{{currentCategory}}新闻</text>
+    <text class="empty-hint">请稍后再来看看吧</text>
+  </view>
+</view>

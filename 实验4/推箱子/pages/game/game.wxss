@@ -1,0 +1,252 @@
+/* pages/game/game.wxss */
+
+page {
+  background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+}
+
+/* 顶部信息栏 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 88%;
+  padding: 0 10rpx;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #E64340;
+}
+
+.step-info {
+  font-size: 32rpx;
+  color: #555;
+  background: #fff;
+  padding: 10rpx 30rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.step-num {
+  color: #E64340;
+  font-weight: bold;
+  font-size: 36rpx;
+}
+
+/* 画布容器 */
+.canvas-wrapper {
+  background: #fff;
+  border-radius: 28rpx;
+  padding: 20rpx;
+  box-shadow: 0 12rpx 40rpx rgba(0, 0, 0, 0.12);
+  margin-top: 10rpx;
+}
+
+canvas {
+  border-radius: 16rpx;
+  width: 320px;
+  height: 320px;
+  background: #f5f5f5;
+  display: block;
+}
+
+/* 控制区域 - 方向键上移（减少顶部间距） */
+.control-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: -20rpx;  /* 上移，减少与画布的距离 */
+}
+
+.btnBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dir-row {
+  display: flex;
+  flex-direction: row;
+  gap: 30rpx;
+  margin-top: 12rpx;  /* 减少行间距 */
+}
+
+.dir-btn {
+  width: 110rpx !important;
+  height: 110rpx !important;
+  border-radius: 50% !important;
+  font-size: 44rpx !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 6rpx 24rpx rgba(230, 67, 64, 0.30) !important;
+  transition: all 0.15s ease !important;
+  border: none !important;
+}
+
+.dir-btn:active {
+  transform: scale(0.85);
+  box-shadow: 0 2rpx 10rpx rgba(230, 67, 64, 0.20) !important;
+}
+
+/* 功能按钮 - 与方向键保持距离，避免误触 */
+.func-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 24rpx;
+  margin-top: 30rpx;  /* 增加与方向键的距离，避免误触 */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.func-btn {
+  padding: 16rpx 40rpx !important;
+  border-radius: 50rpx !important;
+  font-size: 28rpx !important;
+  background: #fff !important;
+  color: #E64340 !important;
+  border: 2rpx solid #E64340 !important;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.3s ease !important;
+  font-weight: bold !important;
+}
+
+.func-btn:active {
+  transform: scale(0.94);
+  background: #E64340 !important;
+  color: #fff !important;
+}
+
+/* ===== 通关弹窗 ===== */
+.modal-mask {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.55) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 48rpx;
+  padding: 50rpx 40rpx 40rpx;
+  width: 85%;
+  max-width: 600rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 30rpx 80rpx rgba(0, 0, 0, 0.3);
+}
+
+.modal-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #E64340;
+  margin-bottom: 8rpx;
+}
+
+.modal-level {
+  font-size: 28rpx;
+  color: #888;
+  margin-bottom: 16rpx;
+}
+
+.modal-stars {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 12rpx !important;
+  margin: 10rpx 0 16rpx !important;
+}
+
+.modal-stars .star {
+  font-size: 56rpx !important;
+  opacity: 0.25 !important;
+  transition: all 0.5s ease !important;
+}
+
+.modal-stars .star.active {
+  opacity: 1 !important;
+  animation: starPop 0.4s ease;
+}
+
+@keyframes starPop {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.modal-steps {
+  font-size: 32rpx;
+  color: #555;
+  margin-bottom: 8rpx;
+}
+
+.modal-steps .highlight {
+  color: #E64340;
+  font-weight: bold;
+  font-size: 40rpx;
+}
+
+.modal-comment {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+  padding: 10rpx 30rpx;
+  background: #f5f5f5;
+  border-radius: 30rpx;
+}
+
+.modal-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 20rpx;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.modal-btn {
+  flex: 1;
+  min-width: 140rpx;
+  padding: 22rpx 0 !important;
+  border-radius: 50rpx !important;
+  font-size: 28rpx !important;
+  font-weight: bold !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.modal-btn:active {
+  transform: scale(0.94);
+}
+
+.restart-btn {
+  background: #fff !important;
+  color: #E64340 !important;
+  border: 2rpx solid #E64340 !important;
+}
+
+.next-btn {
+  background: #E64340 !important;
+  color: #fff !important;
+  box-shadow: 0 6rpx 24rpx rgba(230, 67, 64, 0.35) !important;
+}
+
+.home-btn {
+  background: #f0f0f0 !important;
+  color: #555 !important;
+}

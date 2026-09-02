@@ -1,0 +1,52 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 标题 -->
+  
+  <view class="title">🎮 推箱子</view>
+  <view class="sub-title">选择关卡开始挑战</view>
+  
+  <!-- 关卡列表 -->
+  <view class="levelBox">
+    <view class="box" wx:for="{{levels}}" wx:key="*this" bindtap="showLevelDetail" data-level="{{index}}">
+      <!-- 锁定遮罩 -->
+      <view class="lock-overlay" wx:if="{{index + 1 > maxLevel}}">
+        <text class="lock-icon">🔒</text>
+      </view>
+      <image src="/images/{{item}}" mode="aspectFill" class="{{index + 1 > maxLevel ? 'locked' : ''}}"></image>
+      <view class="level-info">
+        <text class="level-text">第{{index + 1}}关</text>
+        <!-- 星星已删除 -->
+        <text class="level-tip" wx:if="{{index + 1 <= maxLevel}}">点击查看详情</text>
+        <text class="level-tip locked-text" wx:else>🔒 未解锁</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- ===== 关卡详情弹窗 ===== -->
+<view class="modal-mask" wx:if="{{showModal}}" catchtouchmove="preventMove">
+  <view class="modal-content">
+    <!-- 关闭按钮 -->
+    <view class="modal-close" bindtap="closeModal">✕</view>
+    
+    <!-- 第几关 -->
+    <view class="modal-level-title">🎯 第{{modalLevel + 1}}关</view>
+    
+    <!-- 历史星级（横排） -->
+    <view class="modal-stars">
+      <text wx:for="{{3}}" wx:key="*this" wx:for-item="starIndex" class="star {{starIndex < modalStars ? 'active' : ''}}">⭐</text>
+    </view>
+    
+    <!-- 历史步数 -->
+    <view class="modal-history">
+      <text class="history-label">📊 历史记录</text>
+      <text class="history-steps" wx:if="{{modalStars > 0}}">🚶 最佳步数：<text class="highlight">{{modalSteps}}</text> 步</text>
+      <text class="history-steps empty" wx:else>⏳ 尚未游玩</text>
+    </view>
+    
+    <!-- 只有一个按钮：开始游戏 -->
+    <view class="modal-btns">
+      <button class="modal-btn start-btn" bindtap="startGame">🎮 开始游戏</button>
+    </view>
+  </view>
+</view>

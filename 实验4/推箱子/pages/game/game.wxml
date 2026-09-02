@@ -1,0 +1,51 @@
+<!-- pages/game/game.wxml -->
+<view class="container">
+  <!-- 顶部信息栏 -->
+  <view class="header">
+    <view class="title">🏆 第{{level}}关</view>
+    <view class="step-info">🚶 步数：<text class="step-num">{{steps}}</text></view>
+  </view>
+  
+  <!-- 游戏画布（使用旧版 canvas-id） -->
+  <view class="canvas-wrapper">
+    <canvas canvas-id="myCanvas" style="width:320px;height:320px;"></canvas>
+  </view>
+  
+  <!-- 控制按钮区 -->
+  <view class="control-area">
+    <view class="btnBox">
+      <button class="dir-btn" type="warn" bindtap="up">⬆</button>
+      <view class="dir-row">
+        <button class="dir-btn" type="warn" bindtap="left">⬅</button>
+        <button class="dir-btn" type="warn" bindtap="down">⬇</button>
+        <button class="dir-btn" type="warn" bindtap="right">➡</button>
+      </view>
+    </view>
+    
+    <view class="func-btns">
+      <button class="func-btn" bindtap="undo">↩️ 上一步</button>
+      <button class="func-btn" bindtap="restartGame">🔄 重来</button>
+      <button class="func-btn" bindtap="goHome">🏠 首页</button>
+    </view>
+  </view>
+</view>
+
+<!-- ===== 通关弹窗 ===== -->
+<view class="modal-mask" wx:if="{{showWinModal}}" catchtouchmove="preventMove">
+  <view class="modal-content">
+    <view class="modal-title">🎉 恭喜过关！</view>
+    <view class="modal-level">第{{level}}关</view>
+    <view class="modal-stars">
+      <text class="star {{winStars >= 1 ? 'active' : ''}}">⭐</text>
+      <text class="star {{winStars >= 2 ? 'active' : ''}}">⭐</text>
+      <text class="star {{winStars >= 3 ? 'active' : ''}}">⭐</text>
+    </view>
+    <view class="modal-steps">🚶 用了 <text class="highlight">{{winSteps}}</text> 步</view>
+    <view class="modal-comment">{{winComment}}</view>
+    <view class="modal-btns">
+      <button class="modal-btn restart-btn" bindtap="onRestart">🔄 重来</button>
+      <button class="modal-btn next-btn" bindtap="onNextLevel">▶ 下一关</button>
+      <button class="modal-btn home-btn" bindtap="onHome">🏠 首页</button>
+    </view>
+  </view>
+</view>

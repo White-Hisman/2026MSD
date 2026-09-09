@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/homepage/homepage",
+    "pages/detail/detail",
+    "pages/add/add"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#667eea",
+    "navigationBarTitleText": "图片分享社区",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#667eea",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "社区"
+      },
+      {
+        "pagePath": "pages/homepage/homepage",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于显示图片发布位置"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

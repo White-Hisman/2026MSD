@@ -1,0 +1,225 @@
+.container {
+  min-height: 100vh;
+  padding: 20rpx 30rpx 60rpx;
+  box-sizing: border-box;
+}
+
+/* ====== 顶部操作栏 ====== */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+  width: 100%;
+}
+
+/* 个人信息栏 */
+.user-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 20rpx;
+  padding: 16rpx 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(102, 126, 234, 0.08);
+  min-width: 0;
+  backdrop-filter: blur(10px);
+  border: 1rpx solid rgba(255, 255, 255, 0.5);
+}
+
+.user-bar:active {
+  transform: scale(0.98);
+  background: rgba(245, 247, 250, 0.9);
+}
+
+.user-avatar-bar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  border: 3rpx solid #667eea;
+  margin-right: 14rpx;
+  flex-shrink: 0;
+}
+
+.user-info-bar {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-name-bar {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2c3e50;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-location-bar {
+  font-size: 20rpx;
+  color: #95a5a6;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-arrow {
+  font-size: 28rpx;
+  color: #bdc3c7;
+  flex-shrink: 0;
+  margin-left: 8rpx;
+}
+
+/* 退出按钮 */
+.logout-btn {
+  flex-shrink: 0;
+  padding: 16rpx 24rpx;
+  background: rgba(254, 238, 238, 0.9);
+  color: #e74c3c;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  border: 2rpx solid rgba(245, 198, 203, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.logout-btn:active {
+  transform: scale(0.95);
+  background: rgba(253, 221, 221, 0.9);
+}
+
+/* ====== 上传按钮 ====== */
+.upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88rpx;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 20rpx;
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+  box-shadow: 0 6rpx 30rpx rgba(102, 126, 234, 0.35);
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.upload-btn:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+.upload-icon {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+  font-weight: 300;
+}
+
+.upload-label {
+  letter-spacing: 2rpx;
+}
+
+/* ====== 卡片 ====== */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  margin-bottom: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 24rpx rgba(102, 126, 234, 0.08);
+  width: 100%;
+  backdrop-filter: blur(10px);
+  border: 1rpx solid rgba(255, 255, 255, 0.5);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 20rpx;
+}
+
+.avatar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+  border: 2rpx solid #e8edff;
+  flex-shrink: 0;
+}
+
+.title {
+  flex: 1;
+  overflow: hidden;
+}
+
+.nickName {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2c3e50;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.address {
+  font-size: 22rpx;
+  color: #95a5a6;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-time {
+  font-size: 20rpx;
+  color: #bdc3c7;
+  flex-shrink: 0;
+}
+
+.card-body {
+  width: 100%;
+}
+
+.card-body image {
+  width: 100%;
+  display: block;
+}
+
+.card-desc {
+  padding: 12rpx 20rpx 16rpx;
+  font-size: 26rpx;
+  color: #2c3e50;
+  border-top: 1rpx solid rgba(245, 246, 250, 0.8);
+}
+
+/* ====== 空状态 ====== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 40rpx;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20rpx;
+  width: 100%;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+
+.empty-icon {
+  font-size: 80rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #95a5a6;
+  margin-top: 16rpx;
+}
+
+.empty-hint {
+  font-size: 22rpx;
+  color: #bdc3c7;
+  margin-top: 8rpx;
+}

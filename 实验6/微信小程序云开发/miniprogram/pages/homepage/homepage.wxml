@@ -1,0 +1,59 @@
+<view class="homepage-container">
+  <!-- 用户信息 -->
+  <view class="user-header" wx:if="{{userInfo}}">
+    <image class="user-avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+    <view class="user-info">
+      <text class="user-name">{{userInfo.nickName}}</text>
+      <text class="user-location">{{userInfo.province}}</text>
+    </view>
+    <view class="photo-count">📷 {{photoList.length}}张</view>
+    <view class="logout-btn-mini" bindtap="handleLogout">退出</view>
+  </view>
+
+  <!-- 统计信息 -->
+  <view class="stats-bar" wx:if="{{photoList.length > 0}}">
+    <view class="stats-item">
+      <text class="stats-number">{{stats.total}}</text>
+      <text class="stats-label">作品</text>
+    </view>
+    <view class="stats-divider"></view>
+    <view class="stats-item">
+      <text class="stats-number">{{stats.hasDesc}}</text>
+      <text class="stats-label">有描述</text>
+    </view>
+    <view class="stats-divider"></view>
+    <view class="stats-item">
+      <text class="stats-number">{{stats.latestDate}}</text>
+      <text class="stats-label">最新</text>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="divider">
+    <text class="divider-text">📂 我的作品</text>
+  </view>
+
+  <!-- 图片列表 - 3列 -->
+  <view wx:if="{{photoList.length > 0}}" class="photo-grid">
+    <view class="photo-item" wx:for="{{photoList}}" wx:key="photo{{index}}">
+      <view class="photo-wrapper" bindtap="goToDetail" data-id="{{item._id}}">
+        <image class="photo-img" src="{{item.photoUrl}}" mode="aspectFill"></image>
+        <!-- 序号角标 -->
+        <view class="photo-index">{{index + 1}}</view>
+        <!-- 底部渐变 -->
+        <view class="photo-overlay">
+          <text class="photo-desc">{{item.desc || '无描述'}}</text>
+        </view>
+      </view>
+      <!-- 删除按钮 -->
+      <view class="del-btn" catchtap="deletePhoto" data-id="{{item._id}}" data-url="{{item.photoUrl}}">✕</view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">📸</text>
+    <text class="empty-text">还没有作品</text>
+    <text class="empty-hint">去社区首页点击「发布新作品」上传</text>
+  </view>
+</view>

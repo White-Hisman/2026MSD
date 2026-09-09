@@ -1,0 +1,31 @@
+<view class="detail-container">
+  <!-- 顶部导航标题 -->
+  <view class="detail-header">
+    <text class="detail-title">图片详情</text>
+  </view>
+
+  <!-- 图片 -->
+  <view class="image-wrapper">
+    <image class="detail-image" src="{{photo.photoUrl}}" mode="widthFix"></image>
+  </view>
+
+  <!-- 图片信息 -->
+  <view class="info-wrapper" wx:if="{{photo}}">
+    <view class="info-row">
+      <image class="info-avatar" src="{{photo.avatarUrl}}" mode="aspectFill"></image>
+      <view class="info-text">
+        <text class="info-name">{{photo.nickName}}</text>
+        <text class="info-location">{{photo.location || photo.province}}</text>
+      </view>
+      <text class="info-date">{{photo.addDate}}</text>
+    </view>
+    <text class="info-desc" wx:if="{{photo.desc}}">{{photo.desc}}</text>
+  </view>
+
+  <!-- 按钮区域 - 纯文字 -->
+  <view class="btn-row">
+    <button class="action-btn download-btn" bindtap="downloadPhoto">下载</button>
+    <button class="action-btn share-btn" open-type="share">分享</button>
+    <button class="action-btn preview-btn" bindtap="previewPhoto">预览</button>
+  </view>
+</view>

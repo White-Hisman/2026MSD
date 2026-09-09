@@ -1,0 +1,51 @@
+<view class='container'>
+  <!-- 顶部操作栏 -->
+  <view class="top-bar" wx:if="{{isLogin && userInfo}}">
+    <view class="user-bar" bindtap="goToProfile">
+      <image class="user-avatar-bar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <view class="user-info-bar">
+        <text class="user-name-bar">{{userInfo.nickName}}</text>
+        <text class="user-location-bar">{{userInfo.province}}</text>
+      </view>
+      <view class="user-arrow">›</view>
+    </view>
+    <view class="logout-btn" bindtap="handleLogout">退出</view>
+  </view>
+
+  <!-- 上传按钮 -->
+  <view class="upload-btn" bindtap="goToAdd">
+    <text class="upload-icon">+</text>
+    <text class="upload-label">发布新作品</text>
+  </view>
+
+  <!-- 社区图片列表 -->
+  <view wx:if="{{photoList.length > 0}}">
+    <view class='card' wx:for='{{photoList}}' wx:key='photo{{index}}'>
+      <view class='card-head'>
+        <navigator url='/pages/homepage/homepage?id={{item._openid}}'>
+          <image class='avatar' src='{{item.avatarUrl}}' mode='aspectFill'></image>
+        </navigator>
+        <view class='title'>
+          <text class='nickName'>{{item.nickName}}</text>
+          <text class='address'>{{item.location || item.province}}</text>
+        </view>
+        <text class='card-time'>{{item.addDate}}</text>
+      </view>
+
+      <view class='card-body' bindtap="goToDetail" data-id="{{item._id}}">
+        <image src='{{item.photoUrl}}' mode='widthFix'></image>
+      </view>
+
+      <view class='card-desc' wx:if="{{item.desc}}">
+        <text>{{item.desc}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">🖼️</text>
+    <text class="empty-text">还没有图片</text>
+    <text class="empty-hint">点击上方「发布新作品」上传第一张照片</text>
+  </view>
+</view>
